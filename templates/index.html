@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vehicle Health Monitoring</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="bg"></div>
+<div class="container">
+  <h1>🚗 Intelligent Vehicle Health Monitoring System</h1>
+  <p class="subtitle">AI-Based Predictive Maintenance Dashboard</p>
+
+  <form action="/predict" method="post" class="input-card">
+    <input name="engine_temp" placeholder="Engine Temperature (°C)" required>
+    <input name="engine_rpm" placeholder="Engine RPM" required>
+    <input name="oil_level" placeholder="Oil Level (%)" required>
+    <input name="vehicle_mileage" placeholder="Mileage (km)" required>
+    <input name="vibration" placeholder="Vibration Index" required>
+    <button>Analyze Vehicle Health</button>
+  </form>
+</div>
+
+</body>
+</html>

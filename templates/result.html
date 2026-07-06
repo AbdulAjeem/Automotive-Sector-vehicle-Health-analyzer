@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vehicle Health Report</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="bg"></div>
+<div class="container">
+
+  <h1>Vehicle Health Report</h1>
+
+  <!-- STATUS BAR -->
+  <div class="status-bar">
+    <div class="status-fill {{ condition|lower }}"></div>
+  </div>
+
+  <p class="score">Health Score: <b>{{ score }}%</b></p>
+  <p class="condition-text {{ condition|lower }}">
+    Overall Status: <b>{{ condition }}</b>
+  </p>
+
+  {% if issues %}
+  <h2>Component-Wise Diagnosis</h2>
+
+  {% for issue in issues %}
+  <div class="issue-card">
+    <p><b>Affected Part:</b> {{ issue.part }}</p>
+    <p><b>Reason:</b> {{ issue.reason }}</p>
+    <p><b>Precaution:</b> {{ issue.precaution }}</p>
+    <p><b>Recommended Action:</b> {{ issue.action }}</p>
+    <p><b>Estimated Time Left:</b> {{ issue.time }}</p>
+  </div>
+  {% endfor %}
+  {% else %}
+  <div class="normal-box">
+    ✅ Vehicle parameters are within safe limits.
+  </div>
+  {% endif %}
+
+  <a href="/" class="back">← Analyze Another Vehicle</a>
+
+</div>
+
+</body>
+</html>
